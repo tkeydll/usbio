@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Express 2013 for Windows Desktop
+VisualStudioVersion = 12.0.30110.0
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "usbio_console", "usbio_console\usbio_console.csproj", "{8243245F-BFFC-448B-8E16-023D15BA3CE6}"
+EndProject
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "usbiolib", "..\..\..\Desktop\aki\USB-IO2.0(AKI)\usbiolib\usbiolib.vbproj", "{91E32EE3-17B9-4E8C-9C8B-4308EC0C041E}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8243245F-BFFC-448B-8E16-023D15BA3CE6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8243245F-BFFC-448B-8E16-023D15BA3CE6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8243245F-BFFC-448B-8E16-023D15BA3CE6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8243245F-BFFC-448B-8E16-023D15BA3CE6}.Release|Any CPU.Build.0 = Release|Any CPU
+		{91E32EE3-17B9-4E8C-9C8B-4308EC0C041E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{91E32EE3-17B9-4E8C-9C8B-4308EC0C041E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{91E32EE3-17B9-4E8C-9C8B-4308EC0C041E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{91E32EE3-17B9-4E8C-9C8B-4308EC0C041E}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal
