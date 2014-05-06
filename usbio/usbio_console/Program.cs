@@ -4,12 +4,22 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace usbio_cons
+using CommandLine;
+
+namespace usbio_console
 {
     class Program
     {
         static void Main(string[] args)
         {
+            Options o = new Options();
+            bool result = CommandLine.Parser.Default.ParseArguments(args, o);
+            if (!result)
+            {
+                Console.WriteLine(CommandLine.Text.HelpText.AutoBuild(o).ToString());
+                return;
+            }
+
             usbiolib.usbiolib io = new usbiolib.usbiolib();
 
             try
@@ -19,24 +29,24 @@ namespace usbio_cons
                     Console.WriteLine("Cannot open device.");
                     return;
                 }
-                Console.WriteLine("Device is opened.");
 
                 // 点滅
-                for (int i = 0; i < 10; i++ )
+                int t = 0;
+                while (t < (o.Term * 1000))
                 {
                     SendRecv(io, 0x01);
-                    System.Threading.Thread.Sleep(100);
+                    System.Threading.Thread.Sleep(o.Interval);
                     SendRecv(io, 0x00);
-                    System.Threading.Thread.Sleep(100);
+                    System.Threading.Thread.Sleep(o.Interval);
+
+                    t += o.Interval * 2;
                 }
-                
             }
             finally
             {
                 if (io != null)
                 {
                     io.closeDevice();
-                    Console.WriteLine("Device is closed.");
                 }
             }
 
