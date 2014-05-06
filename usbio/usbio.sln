@@ -5,7 +5,7 @@ VisualStudioVersion = 12.0.30110.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "usbio_console", "usbio_console\usbio_console.csproj", "{8243245F-BFFC-448B-8E16-023D15BA3CE6}"
 EndProject
-Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "usbiolib", "..\..\..\Desktop\aki\USB-IO2.0(AKI)\usbiolib\usbiolib.vbproj", "{91E32EE3-17B9-4E8C-9C8B-4308EC0C041E}"
+Project("{F184B08F-C81C-45F6-A57F-5ABD9991F28F}") = "usbiolib", "usbiolib\usbiolib.vbproj", "{91E32EE3-17B9-4E8C-9C8B-4308EC0C041E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

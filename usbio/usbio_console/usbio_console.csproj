@@ -48,7 +48,7 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\..\..\..\Desktop\aki\USB-IO2.0%28AKI%29\usbiolib\usbiolib.vbproj">
+    <ProjectReference Include="..\usbiolib\usbiolib.vbproj">
       <Project>{91e32ee3-17b9-4e8c-9c8b-4308ec0c041e}</Project>
       <Name>usbiolib</Name>
     </ProjectReference>

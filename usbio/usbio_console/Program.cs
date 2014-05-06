@@ -51,8 +51,7 @@ namespace usbio_cons
             sendData[0] = 0x20;     // コマンド：デジタル入出力
             sendData[1] = 0x01;     // 出力１：J1
             sendData[2] = sendJ1;     // 値
-            //sendData[3] = 0x02;     // 出力２：J2
-            //sendData[4] = 0x00;     // 値
+
             sendData[63] = 0x00;     // シーケンス
 
             io.SendRecv(sendData, ref recvData);
