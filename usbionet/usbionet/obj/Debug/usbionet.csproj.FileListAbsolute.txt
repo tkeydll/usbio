@@ -1,7 +1,0 @@
-C:\Users\Kobay_000\Documents\GitHub\practice\usbionet\usbionet\bin\Debug\usbionet.exe.config
-C:\Users\Kobay_000\Documents\GitHub\practice\usbionet\usbionet\obj\Debug\usbionet.csprojResolveAssemblyReference.cache
-C:\Users\Kobay_000\Documents\GitHub\practice\usbionet\usbionet\bin\Debug\usbionet.exe
-C:\Users\Kobay_000\Documents\GitHub\practice\usbionet\usbionet\bin\Debug\usbionet.pdb
-C:\Users\Kobay_000\Documents\GitHub\practice\usbionet\usbionet\bin\Debug\USB-IO_Family.dll
-C:\Users\Kobay_000\Documents\GitHub\practice\usbionet\usbionet\obj\Debug\usbionet.exe
-C:\Users\Kobay_000\Documents\GitHub\practice\usbionet\usbionet\obj\Debug\usbionet.pdb
