@@ -10,7 +10,7 @@ namespace tkeydll.usbio.usbio_console
 {
     class Options
     {
-        [Option('c', "control-time", Required=false,DefaultValue=10000, HelpText="制御時間[msec]")]
+        [Option('c', "control-time", Required=true, DefaultValue=10000, HelpText="制御時間[msec]")]
         public int ControlTime { get; set; }
 
         [Option('n', "power-on-time", Required=false, DefaultValue=500, HelpText="電源on時間[msec]")]
@@ -18,5 +18,8 @@ namespace tkeydll.usbio.usbio_console
 
         [Option('i', "interval", Required=false, DefaultValue=500, HelpText="電源off時間[msec]")]
         public int Interval { get; set; }
+
+        //[Option('j', "channel", Required=false, DefaultValue=0, HelpText="出力チャネル")]
+        //public int Port { get; set; }
     }
 }

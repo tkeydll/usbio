@@ -8,9 +8,12 @@ namespace tkeydll.usbio.usbio_console
 {
     class Program
     {
+        private static usbiolib io;
+        private static Options o;
+
         static void Main(string[] args)
         {
-            Options o = new Options();
+            o = new Options();
             bool result = CommandLine.Parser.Default.ParseArguments(args, o);
             if (!result)
             {
@@ -18,7 +21,7 @@ namespace tkeydll.usbio.usbio_console
                 return;
             }
 
-            usbiolib io = new usbiolib();
+            io = new usbiolib();
 
             // Open USB-IO.
             if (io.openDevice() == false)
@@ -32,9 +35,9 @@ namespace tkeydll.usbio.usbio_console
                 int i = 0;
                 while (i < o.ControlTime)
                 {
-                    SendRecv(io, 0x01);
+                    SendRecv(true);
                     System.Threading.Thread.Sleep(o.PowerOnTime);
-                    SendRecv(io, 0x00);
+                    SendRecv(false);
                     System.Threading.Thread.Sleep(o.Interval);
 
                     i += o.PowerOnTime + o.Interval;
@@ -43,21 +46,24 @@ namespace tkeydll.usbio.usbio_console
             }
             finally
             {
-                CloseDevice(io);
+                CloseDevice();
             }
 
         }
 
-        private static void SendRecv(usbiolib io, byte sendJ1)
+        const byte USBIO_PWR_ON = 0x01;
+        const byte USBIO_PWR_OFF = 0x00;
+
+        private static void SendRecv(bool powerOn)
         {
             byte[] sendData = new byte[64];
             byte[] recvData = new byte[64];
 
-            sendData[0] = 0x20;     // コマンド：デジタル入出力
-            sendData[1] = 0x01;     // 出力１：J1
-            sendData[2] = sendJ1;     // 値
+            sendData[0] = 0x20;
+            sendData[1] = 0x01;
+            sendData[2] = powerOn ? USBIO_PWR_ON : USBIO_PWR_OFF;
 
-            sendData[63] = 0x00;     // シーケンス
+            sendData[63] = 0x00;
 
             io.SendRecv(sendData, ref recvData);
         }
@@ -66,11 +72,11 @@ namespace tkeydll.usbio.usbio_console
         /// 電源を落として制御を終了します
         /// </summary>
         /// <param name="io"></param>
-        private static void CloseDevice(usbiolib io)
+        private static void CloseDevice()
         {
             if (io != null)
             {
-                SendRecv(io, 0x00);
+                SendRecv(false);
                 io.closeDevice();
             }
         }
