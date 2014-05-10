@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace usbio_console
+namespace tkeydll.usbio.usbio_console
 {
     class Program
     {
@@ -18,7 +18,7 @@ namespace usbio_console
                 return;
             }
 
-            usbiolib.usbiolib io = new usbiolib.usbiolib();
+            usbiolib io = new usbiolib();
 
             // Open USB-IO.
             if (io.openDevice() == false)
@@ -48,7 +48,7 @@ namespace usbio_console
 
         }
 
-        private static void SendRecv(usbiolib.usbiolib io, byte sendJ1)
+        private static void SendRecv(usbiolib io, byte sendJ1)
         {
             byte[] sendData = new byte[64];
             byte[] recvData = new byte[64];
@@ -66,7 +66,7 @@ namespace usbio_console
         /// 電源を落として制御を終了します
         /// </summary>
         /// <param name="io"></param>
-        private static void CloseDevice(usbiolib.usbiolib io)
+        private static void CloseDevice(usbiolib io)
         {
             if (io != null)
             {

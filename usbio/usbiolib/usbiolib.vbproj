@@ -6,7 +6,8 @@
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
     <ProjectGuid>{91E32EE3-17B9-4E8C-9C8B-4308EC0C041E}</ProjectGuid>
     <OutputType>Library</OutputType>
-    <RootNamespace>usbiolib</RootNamespace>
+    <RootNamespace>
+    </RootNamespace>
     <AssemblyName>usbiolib</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>Windows</MyType>

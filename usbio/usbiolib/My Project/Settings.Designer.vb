@@ -64,9 +64,9 @@ Namespace My
     Friend Module MySettingsProperty
         
         <Global.System.ComponentModel.Design.HelpKeywordAttribute("My.Settings")>  _
-        Friend ReadOnly Property Settings() As Global.usbiolib.My.MySettings
+        Friend ReadOnly Property Settings() As Global.My.MySettings
             Get
-                Return Global.usbiolib.My.MySettings.Default
+                Return Global.My.MySettings.Default
             End Get
         End Property
     End Module
