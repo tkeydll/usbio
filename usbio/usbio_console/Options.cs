@@ -10,11 +10,13 @@ namespace usbio_console
 {
     class Options
     {
-        [Option('t', "term", Required=true, HelpText="制御時間[sec]")]
-        public int Term { get; set; }
+        [Option('c', "control-time", Required=false,DefaultValue=10000, HelpText="制御時間[msec]")]
+        public int ControlTime { get; set; }
 
-        [Option('i', "interval", Required=false, DefaultValue=500, HelpText="点滅する間隔[msec]初期値：500ms")]
+        [Option('n', "power-on-time", Required=false, DefaultValue=500, HelpText="電源on時間[msec]")]
+        public int PowerOnTime { get; set; }
+
+        [Option('i', "interval", Required=false, DefaultValue=500, HelpText="電源off時間[msec]")]
         public int Interval { get; set; }
-
     }
 }

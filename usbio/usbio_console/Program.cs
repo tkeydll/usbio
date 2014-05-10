@@ -4,8 +4,6 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-using CommandLine;
-
 namespace usbio_console
 {
     class Program
@@ -22,36 +20,33 @@ namespace usbio_console
 
             usbiolib.usbiolib io = new usbiolib.usbiolib();
 
+            // Open USB-IO.
+            if (io.openDevice() == false)
+            {
+                Console.WriteLine("Cannot open device.");
+                return;
+            }
+
             try
             {
-                if (io.openDevice() == false)
-                {
-                    Console.WriteLine("Cannot open device.");
-                    return;
-                }
-
-                // 点滅
-                int t = 0;
-                while (t < (o.Term * 1000))
+                int i = 0;
+                while (i < o.ControlTime)
                 {
                     SendRecv(io, 0x01);
-                    System.Threading.Thread.Sleep(o.Interval);
+                    System.Threading.Thread.Sleep(o.PowerOnTime);
                     SendRecv(io, 0x00);
                     System.Threading.Thread.Sleep(o.Interval);
 
-                    t += o.Interval * 2;
+                    i += o.PowerOnTime + o.Interval;
                 }
+
             }
             finally
             {
-                if (io != null)
-                {
-                    io.closeDevice();
-                }
+                CloseDevice(io);
             }
 
         }
-
 
         private static void SendRecv(usbiolib.usbiolib io, byte sendJ1)
         {
@@ -65,6 +60,19 @@ namespace usbio_console
             sendData[63] = 0x00;     // シーケンス
 
             io.SendRecv(sendData, ref recvData);
+        }
+
+        /// <summary>
+        /// 電源を落として制御を終了します
+        /// </summary>
+        /// <param name="io"></param>
+        private static void CloseDevice(usbiolib.usbiolib io)
+        {
+            if (io != null)
+            {
+                SendRecv(io, 0x00);
+                io.closeDevice();
+            }
         }
 
     }
