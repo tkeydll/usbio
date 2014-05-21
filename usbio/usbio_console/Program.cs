@@ -32,15 +32,20 @@ namespace usbio.usbio_console
 
             try
             {
-                for (int i = 0; i < o.Repeat + 1; i++)
+                for (int i = 0; i < o.Number; i++)
                 {
+                    // interval
+                    if (i > 0)
+                    {
+                        System.Threading.Thread.Sleep(o.Interval);
+                    }
+
                     // power on
                     SendRecv(true);
                     System.Threading.Thread.Sleep(o.Time);
 
                     // power off
                     SendRecv(false);
-                    System.Threading.Thread.Sleep(o.Interval);
                 }
             }
             finally
