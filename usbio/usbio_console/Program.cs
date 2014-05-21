@@ -13,6 +13,8 @@ namespace usbio.usbio_console
 
         static void Main(string[] args)
         {
+            Console.CancelKeyPress += new ConsoleCancelEventHandler(Ctrl_C_Pressed);
+
             o = new Options();
             bool result = CommandLine.Parser.Default.ParseArguments(args, o);
             if (!result)
@@ -85,5 +87,16 @@ namespace usbio.usbio_console
             }
         }
 
+
+        /// <summary>
+        /// Ctrl-C で強制終了された場合に電源をOffにします
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private static void Ctrl_C_Pressed(object sender, ConsoleCancelEventArgs e)
+        {
+            // power off
+            SendRecv(false);
+        }
     }
 }
