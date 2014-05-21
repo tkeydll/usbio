@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 
 using CommandLine;
+using CommandLine.Text;
 
 namespace usbio.usbio_console
 {
@@ -22,9 +23,14 @@ namespace usbio.usbio_console
         //[Option('j', "channel", Required=false, DefaultValue=0, HelpText="出力チャネル")]
         //public int Port { get; set; }
 
-        public void Usage()
+        [ParserState]
+        public IParserState LastParserState { get; set; }
+
+        [HelpOption]
+        public string GetUsage()
         {
-            
+            //return HelpText.AutoBuild(this).ToString();
+            return string.Empty;
         }
 
     }
