@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 using CommandLine;
 
-namespace tkeydll.usbio.usbio_console
+namespace usbio.usbio_console
 {
     class Options
     {

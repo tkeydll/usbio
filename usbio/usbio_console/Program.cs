@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace tkeydll.usbio.usbio_console
+namespace usbio.usbio_console
 {
     class Program
     {

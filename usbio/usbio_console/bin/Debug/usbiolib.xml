@@ -6,7 +6,7 @@ usbiolib
 </name>
 </assembly>
 <members>
-<member name="T:tkeydll.usbio.usbiolib">
+<member name="T:usbio.usbiolib">
 	<summary>
  USB-IO 2.0 (AKI) 制御ライブラリ
  </summary>
