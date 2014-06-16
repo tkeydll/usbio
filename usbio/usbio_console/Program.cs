@@ -11,6 +11,10 @@ namespace usbio.usbio_console
         private static usbiolib io;
         private static Options o;
 
+        /// <summary>
+        /// エントリポイント
+        /// </summary>
+        /// <param name="args"></param>
         static void Main(string[] args)
         {
             Console.CancelKeyPress += new ConsoleCancelEventHandler(Ctrl_C_Pressed);
@@ -60,6 +64,12 @@ namespace usbio.usbio_console
         const byte USBIO_PWR_ON = 0x01;
         const byte USBIO_PWR_OFF = 0x00;
 
+        /// <summary>
+        /// JP1電源のon/offを制御します。
+        /// </summary>
+        /// <param name="powerOn">
+        /// true: 電源on, false: 電源off
+        /// </param>
         private static void SendRecv(bool powerOn)
         {
             byte[] sendData = new byte[64];
@@ -75,9 +85,8 @@ namespace usbio.usbio_console
         }
 
         /// <summary>
-        /// 電源を落として制御を終了します
+        /// 電源を落として制御を終了します。
         /// </summary>
-        /// <param name="io"></param>
         private static void CloseDevice()
         {
             if (io != null)
