@@ -1,6 +1,6 @@
 ﻿Imports System.Runtime.InteropServices
 
-Namespace usbio
+Namespace usbiolib
 
     ''' <summary>
     ''' USB-IO 2.0 (AKI) 制御ライブラリ

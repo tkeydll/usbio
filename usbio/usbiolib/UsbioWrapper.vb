@@ -1,5 +1,5 @@
 ﻿
-Namespace usbio
+Namespace usbiolib
 
     ''' <summary>
     ''' usbiolibのラッパークラス
