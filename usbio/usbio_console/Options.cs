@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 using CommandLine;
 using CommandLine.Text;
 
-namespace usbio.usbio_console
+namespace usbio_console
 {
     class Options
     {
