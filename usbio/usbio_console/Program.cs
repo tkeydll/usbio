@@ -8,8 +8,12 @@ namespace usbio.usbio_console
 {
     class Program
     {
-        private static usbiolib io;
         private static Options o;
+
+        /// <summary>
+        /// usbio制御ラッパー
+        /// </summary>
+        private static UsbioWrapper _io = new UsbioWrapper();
 
         /// <summary>
         /// エントリポイント
@@ -27,10 +31,8 @@ namespace usbio.usbio_console
                 return;
             }
 
-            io = new usbiolib();
-
             // Open USB-IO.
-            if (io.openDevice() == false)
+            if (_io.OpenDevice() == false)
             {
                 Console.WriteLine("Cannot open device.");
                 return;
@@ -47,55 +49,19 @@ namespace usbio.usbio_console
                     }
 
                     // power on
-                    SendRecv(true);
+                    _io.SendRecv(true);
                     System.Threading.Thread.Sleep(o.Time);
 
                     // power off
-                    SendRecv(false);
+                    _io.SendRecv(false);
                 }
             }
             finally
             {
-                CloseDevice();
+                _io.CloseDevice();
             }
 
         }
-
-        const byte USBIO_PWR_ON = 0x01;
-        const byte USBIO_PWR_OFF = 0x00;
-
-        /// <summary>
-        /// JP1電源のon/offを制御します。
-        /// </summary>
-        /// <param name="powerOn">
-        /// true: 電源on, false: 電源off
-        /// </param>
-        private static void SendRecv(bool powerOn)
-        {
-            byte[] sendData = new byte[64];
-            byte[] recvData = new byte[64];
-
-            sendData[0] = 0x20;
-            sendData[1] = 0x01;
-            sendData[2] = powerOn ? USBIO_PWR_ON : USBIO_PWR_OFF;
-
-            sendData[63] = 0x00;
-
-            io.SendRecv(sendData, ref recvData);
-        }
-
-        /// <summary>
-        /// 電源を落として制御を終了します。
-        /// </summary>
-        private static void CloseDevice()
-        {
-            if (io != null)
-            {
-                SendRecv(false);
-                io.closeDevice();
-            }
-        }
-
 
         /// <summary>
         /// Ctrl-C で強制終了された場合に電源をOffにします
@@ -105,7 +71,7 @@ namespace usbio.usbio_console
         private static void Ctrl_C_Pressed(object sender, ConsoleCancelEventArgs e)
         {
             // power off
-            SendRecv(false);
+            _io.SendRecv(false);
         }
     }
 }
