@@ -52,10 +52,12 @@ namespace usbio_console
 
                     // power on
                     _io.SendRecv(true);
+                    ShowDebugMessage("Power on.");
                     System.Threading.Thread.Sleep(o.Time);
 
                     // power off
                     _io.SendRecv(false);
+                    ShowDebugMessage("Power off.");
                 }
             }
             finally
@@ -74,6 +76,15 @@ namespace usbio_console
         {
             // power off
             _io.SendRecv(false);
+        }
+
+
+        private static void ShowDebugMessage(string msg)
+        {
+                if (o.Debug)
+                {
+                        Console.WriteLine(msg);
+                }
         }
     }
 }
