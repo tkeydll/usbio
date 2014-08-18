@@ -20,8 +20,8 @@ namespace usbio_console
         [Option('i', "exec-interval", Required=false, DefaultValue=500, HelpText="繰り返し実行時のインターバル[msec]")]
         public int Interval { get; set; }
 
-        //[Option('j', "channel", Required=false, DefaultValue=0, HelpText="出力チャネル")]
-        //public int Port { get; set; }
+        [Option('d', "debug", Required=false, DefaultValue=false, HelpText="デバッグ情報を表示")]
+        public bool Debug { get; set; }
 
         [ParserState]
         public IParserState LastParserState { get; set; }

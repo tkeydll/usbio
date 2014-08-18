@@ -1,11 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-
-using tkeydll.usbio.usbiolib;
+using libusbio;
 
 namespace usbio_web.Controllers
 {
@@ -14,7 +11,7 @@ namespace usbio_web.Controllers
         /// <summary>
         /// usbio制御ラッパー
         /// </summary>
-        static UsbioWrapper _io = new UsbioWrapper();
+        static UsbIoWrapper _io = new UsbIoWrapper();
 
         /// <summary>
         /// POST api/Usbio
@@ -42,11 +39,11 @@ namespace usbio_web.Controllers
                     }
 
                     // power on
-                    _io.SendRecv(true);
+                    _io.SendRecv(1, "11111111");
                     System.Threading.Thread.Sleep(usb.Time);
 
                     // power off
-                    _io.SendRecv(false);
+                    _io.SendRecv(1, "00000000");
                 }
             }
             finally

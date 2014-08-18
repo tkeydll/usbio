@@ -5,11 +5,11 @@ using System.Runtime.InteropServices;
 // アセンブリに関する一般情報は以下の属性セットをとおして制御されます。
 // アセンブリに関連付けられている情報を変更するには、
 // これらの属性値を変更してください。
-[assembly: AssemblyTitle("usbio_console")]
+[assembly: AssemblyTitle("libusbio")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("usbio_console")]
+[assembly: AssemblyProduct("libusbio")]
 [assembly: AssemblyCopyright("Copyright ©  2014")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // 次の GUID は、このプロジェクトが COM に公開される場合の、typelib の ID です
-[assembly: Guid("85d2506b-a90f-41a6-8f11-b35358a8aae0")]
+[assembly: Guid("9b070fd7-ef6d-4602-a941-a243bf29f93e")]
 
 // アセンブリのバージョン情報は、以下の 4 つの値で構成されています:
 //
@@ -33,4 +33,4 @@ using System.Runtime.InteropServices;
 // 既定値にすることができます:
 // [assembly: AssemblyVersion("1.0.*")]
 [assembly: AssemblyVersion("1.1.0.*")]
-//[assembly: AssemblyFileVersion("1.0.1.1")]
+//[assembly: AssemblyFileVersion("1.0.0.0")]
