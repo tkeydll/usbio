@@ -1,10 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using tkeydll.usbio.usbiolib;
+using libusbio;
 
 namespace usbio_console
 {
@@ -15,7 +10,7 @@ namespace usbio_console
         /// <summary>
         /// usbio制御ラッパー
         /// </summary>
-        private static UsbioWrapper _io = new UsbioWrapper();
+        private static UsbIoWrapper _io = new UsbIoWrapper();
 
         /// <summary>
         /// エントリポイント
@@ -51,12 +46,12 @@ namespace usbio_console
                     }
 
                     // power on
-                    _io.SendRecv(true);
+                    _io.SendRecv(1, "11111111");
                     ShowDebugMessage("Power on.");
                     System.Threading.Thread.Sleep(o.Time);
 
                     // power off
-                    _io.SendRecv(false);
+                    _io.SendRecv(1, "00000000");
                     ShowDebugMessage("Power off.");
                 }
             }
@@ -75,16 +70,16 @@ namespace usbio_console
         private static void Ctrl_C_Pressed(object sender, ConsoleCancelEventArgs e)
         {
             // power off
-            _io.SendRecv(false);
+            _io.SendRecv(1, "00000000");
         }
 
 
         private static void ShowDebugMessage(string msg)
-        {
-                if (o.Debug)
-                {
-                        Console.WriteLine(msg);
-                }
+        {    
+            if (o.Debug)
+            {
+                Console.WriteLine(msg);
+            }
         }
     }
 }

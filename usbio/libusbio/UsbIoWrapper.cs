@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using USB_IO_Family32;
 
-namespace usbio
+namespace libusbio
 {
     public class UsbIoWrapper
     {
